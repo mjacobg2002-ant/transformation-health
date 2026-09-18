@@ -275,7 +275,7 @@
     }
 
     /* Programs */
-    .prog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:46px}
+    .prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:46px}
     .prog-card{position:relative;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line);min-height:280px;display:flex}
     .prog-card.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,37,64,.12) 0%,rgba(15,37,64,.82) 100%)}
     .prog-card.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
@@ -295,7 +295,7 @@
     .prog-card.text .body h3{color:#fff;font-size:1.4rem}
     .prog-note{margin-top:22px;font-size:.9rem;color:var(--ink-soft);display:flex;gap:9px;align-items:flex-start}
     .prog-note svg{width:18px;height:18px;stroke:var(--gold);flex:none;margin-top:2px}
-    @media (max-width:720px){.prog-grid{grid-template-columns:1fr}}
+    @media (max-width:900px){.prog-grid{grid-template-columns:1fr;max-width:560px;margin-inline:auto}}
 
     /* Locations */
     .loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:46px}
@@ -449,7 +449,6 @@
                       <li><a role="menuitem" href="#services">Minor PRP</a></li>
                       <li><a role="menuitem" href="#services">Health Home</a></li>
                       <li><a role="menuitem" href="#services">Supported Employment</a></li>
-                      <li><a role="menuitem" href="#programs">LGBTQIA+ Umbrella Club</a></li>
                     </ul>
                   </div>
                 </div>
@@ -505,7 +504,6 @@
             <a href="#services" data-close>Minor PRP</a>
             <a href="#services" data-close>Health Home</a>
             <a href="#services" data-close>Supported Employment</a>
-            <a href="#programs" data-close>LGBTQIA+ Umbrella Club</a>
           </div>
         </details>
         <a class="m-item" href="#about" data-close>About</a>
@@ -674,19 +672,12 @@
             </div>
           </article>
 
-          <article class="prog-card text sage reveal">
+          <article class="prog-card photo reveal">
+            <img src="assets/images/program-employment.jpg" alt="A workplace mentor reviewing notes on a clipboard alongside a colleague in a plant-filled office" width="1000" height="667" loading="lazy" />
             <div class="body">
-              <span class="picon"><svg viewBox="0 0 24 24"><path d="M20 7h-4V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2ZM10 5h4v2h-4Z"/></svg></span>
+              <span class="tag">Vocational</span>
               <h3>Supported Employment</h3>
               <p>Coaching and workplace support that help individuals build skills, find work, and sustain independence.</p>
-            </div>
-          </article>
-
-          <article class="prog-card text gold reveal">
-            <div class="body">
-              <span class="picon"><svg viewBox="0 0 24 24"><path d="M18 4a3 3 0 0 0-3 3c0 1 .5 2 .5 2H8.5S9 8 9 7a3 3 0 1 0-3 3h12a3 3 0 0 0 0-6Z"/><path d="M4 12h16v7a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1zM12 10v10"/></svg></span>
-              <h3>LGBTQIA+ Umbrella Club</h3>
-              <p>An affirming space for LGBTQIA+ individuals to find community, belonging, and peer support.</p>
             </div>
           </article>
         </div>
