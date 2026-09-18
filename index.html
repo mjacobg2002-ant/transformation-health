@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transformation Health | Behavioral Health Care in Baltimore &amp; Odenton, MD</title>
+  <meta name="description" content="Transformation Health provides individualized mental health, substance use recovery, and psychiatric rehabilitation services for children, adolescents, adults, and families across Maryland. In-person and telehealth. Baltimore City &amp; Odenton." />
+  <meta name="theme-color" content="#0f2540" />
+  <link rel="icon" href="assets/images/logo.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============ Design tokens ============ */
+    :root{
+      --navy:#0f2540;        /* deep navy — headings, high-trust areas */
+      --navy-700:#173458;
+      --blue:#2c6390;        /* refined healthcare blue — primary actions */
+      --blue-600:#255579;
+      --blue-050:#eaf1f7;
+      --gold:#b3893f;        /* muted heritage gold accent */
+      --gold-soft:#d9be8a;
+      --sage:#6f8c7f;        /* subdued supportive sage */
+      --sage-050:#eef3f0;
+      --ivory:#faf7f1;       /* soft off-white section bg */
+      --ivory-2:#f4efe6;
+      --cream-card:#fffdf9;
+      --ink:#2c3238;         /* charcoal body text */
+      --ink-soft:#55606b;
+      --line:#e4ddcf;        /* subtle borders */
+      --line-cool:#dbe4ec;
+      --white:#ffffff;
+      --radius:14px;
+      --radius-lg:22px;
+      --shadow-sm:0 1px 2px rgba(15,37,64,.05);
+      --shadow:0 10px 30px -18px rgba(15,37,64,.35);
+      --wrap:1160px;
+      --ease:cubic-bezier(.22,.61,.36,1);
+      --sans:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      --serif:'Fraunces',Georgia,'Times New Roman',serif;
+    }
+
+    /* ============ Base ============ */
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+    body{
+      margin:0;font-family:var(--sans);color:var(--ink);background:var(--white);
+      line-height:1.62;font-size:17px;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+    }
+    h1,h2,h3,h4{font-family:var(--serif);color:var(--navy);line-height:1.12;font-weight:600;letter-spacing:-.01em;margin:0}
+    p{margin:0}
+    a{color:var(--blue-600);text-decoration:none}
+    a:hover{text-decoration:underline}
+    img{max-width:100%;display:block}
+    ul{margin:0}
+    .wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:24px}
+    .eyebrow{font-size:.82rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
+    .lead{font-size:1.12rem;color:var(--ink-soft)}
+    section{scroll-margin-top:120px}
+
+    :focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:4px}
+
+    .skip{position:absolute;left:-999px;top:0;background:var(--navy);color:#fff;padding:12px 20px;z-index:200;border-radius:0 0 8px 0}
+    .skip:focus{left:0}
+
+    /* ============ Buttons ============ */
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:.5em;
+      font-family:var(--sans);font-weight:600;font-size:.98rem;line-height:1;
+      padding:14px 24px;border-radius:999px;border:1.5px solid transparent;cursor:pointer;
+      transition:transform .18s var(--ease),background .18s var(--ease),box-shadow .18s var(--ease),color .18s var(--ease);
+      text-decoration:none;white-space:nowrap;
+    }
+    .btn:hover{text-decoration:none}
+    .btn-primary{background:var(--blue);color:#fff;box-shadow:0 8px 20px -10px rgba(44,99,144,.7)}
+    .btn-primary:hover{background:var(--blue-600);transform:translateY(-1px)}
+    .btn-navy{background:var(--navy);color:#fff}
+    .btn-navy:hover{background:var(--navy-700);transform:translateY(-1px)}
+    .btn-ghost{background:transparent;color:var(--navy);border-color:var(--line-cool)}
+    .btn-ghost:hover{border-color:var(--navy);background:#fff}
+    .btn-gold{background:var(--gold);color:#fff}
+    .btn-gold:hover{background:#9d7635;transform:translateY(-1px)}
+    .btn-white{background:#fff;color:var(--navy)}
+    .btn-white:hover{background:var(--ivory);transform:translateY(-1px)}
+    .btn-outline-light{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
+    .btn-outline-light:hover{background:rgba(255,255,255,.1);border-color:#fff}
+    @media (prefers-reduced-motion:reduce){.btn:hover{transform:none}}
+
+    .txtlink{display:inline-flex;align-items:center;gap:.4em;font-weight:600;color:var(--blue-600)}
+    .txtlink .arw{transition:transform .18s var(--ease)}
+    .txtlink:hover .arw{transform:translateX(4px)}
+
+    /* ============ Utility bar ============ */
+    .utility{background:var(--navy);color:#cdd9e6;font-size:.85rem}
+    .utility .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:40px;padding-block:6px}
+    .utility a{color:#e7eef5}
+    .utility .u-left{display:flex;align-items:center;gap:8px}
+    .utility .u-right{display:flex;align-items:center;gap:22px}
+    .utility .u-right a{display:inline-flex;align-items:center;gap:6px}
+    .utility svg{width:15px;height:15px;flex:none;stroke:var(--gold-soft)}
+    .u-sep{opacity:.35}
+    @media (max-width:860px){
+      .utility .u-serve{display:none}
+      .utility .wrap{justify-content:center}
+      .utility .u-right{gap:16px}
+    }
+
+    /* ============ Header ============ */
+    header.site{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-cool)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:82px}
+    .brand{display:flex;align-items:center;flex:none}
+    .brand img{height:60px;width:auto}
+    .brand .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+    .mainnav{display:flex;align-items:center;gap:4px}
+    .mainnav > ul{list-style:none;display:flex;align-items:center;gap:2px;padding:0;margin:0}
+    .navlink{
+      display:inline-flex;align-items:center;gap:5px;font-weight:600;font-size:.96rem;color:var(--navy);
+      background:transparent;border:0;cursor:pointer;padding:10px 14px;border-radius:8px;font-family:var(--sans);
+    }
+    .navlink:hover{background:var(--ivory-2);text-decoration:none}
+    .navlink .chev{width:14px;height:14px;transition:transform .2s var(--ease)}
+    .has-mega[aria-expanded="true"] .chev{transform:rotate(180deg)}
+
+    .header-cta{display:flex;align-items:center;gap:14px;flex:none}
+    .header-cta .refer{font-weight:600;color:var(--navy);font-size:.94rem}
+    .header-cta .refer:hover{color:var(--blue-600)}
+
+    /* Mega menu */
+    .mega-wrap{position:relative}
+    .mega{
+      position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(8px);
+      width:min(760px,92vw);background:#fff;border:1px solid var(--line-cool);border-radius:var(--radius-lg);
+      box-shadow:0 30px 60px -30px rgba(15,37,64,.45);padding:26px;opacity:0;visibility:hidden;
+      transition:opacity .2s var(--ease),transform .2s var(--ease);z-index:120;
+    }
+    .mega::before{content:"";position:absolute;top:-16px;left:0;right:0;height:16px}
+    .mega-wrap:hover .mega,.has-mega[aria-expanded="true"] + .mega,.mega:focus-within{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+    .mega-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px 26px}
+    .mega-col h4{font-family:var(--sans);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:0 0 10px;font-weight:700}
+    .mega-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:2px}
+    .mega-col a{display:block;padding:7px 10px;border-radius:8px;color:var(--ink);font-weight:500;font-size:.93rem}
+    .mega-col a:hover{background:var(--ivory-2);color:var(--navy);text-decoration:none}
+    .mega-foot{margin-top:20px;padding-top:16px;border-top:1px solid var(--line-cool);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+    .mega-foot span{color:var(--ink-soft);font-size:.9rem}
+
+    /* Mobile toggler */
+    .burger{display:none;flex-direction:column;gap:5px;width:44px;height:44px;border:1px solid var(--line-cool);border-radius:10px;background:#fff;cursor:pointer;align-items:center;justify-content:center}
+    .burger span{width:20px;height:2px;background:var(--navy);border-radius:2px;transition:.2s var(--ease)}
+
+    @media (max-width:1024px){
+      .mainnav,.header-cta .refer{display:none}
+      .burger{display:flex}
+      .brand img{height:52px}
+      .nav{min-height:72px}
+    }
+
+    /* Mobile drawer */
+    .drawer{position:fixed;inset:0;z-index:200;display:none}
+    .drawer.open{display:block}
+    .drawer-scrim{position:absolute;inset:0;background:rgba(15,37,64,.5)}
+    .drawer-panel{
+      position:absolute;top:0;right:0;height:100%;width:min(380px,88vw);background:#fff;
+      box-shadow:-20px 0 60px -30px rgba(0,0,0,.5);display:flex;flex-direction:column;
+      overflow-y:auto;-webkit-overflow-scrolling:touch;transform:translateX(100%);transition:transform .25s var(--ease);
+    }
+    .drawer.open .drawer-panel{transform:translateX(0)}
+    @media (prefers-reduced-motion:reduce){.drawer-panel{transition:none}}
+    .drawer-top{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--line-cool)}
+    .drawer-top img{height:46px}
+    .x-btn{width:42px;height:42px;border:1px solid var(--line-cool);border-radius:10px;background:#fff;cursor:pointer;font-size:1.3rem;color:var(--navy);line-height:1}
+    .drawer nav{padding:10px 14px 24px}
+    .drawer .m-item{display:block;padding:13px 12px;font-weight:600;color:var(--navy);border-bottom:1px solid var(--ivory-2);font-size:1.02rem}
+    .drawer details summary{list-style:none;display:flex;justify-content:space-between;align-items:center;padding:13px 12px;font-weight:600;color:var(--navy);cursor:pointer;border-bottom:1px solid var(--ivory-2);font-size:1.02rem}
+    .drawer details summary::-webkit-details-marker{display:none}
+    .drawer details[open] summary .chev{transform:rotate(180deg)}
+    .drawer details .chev{width:16px;height:16px;transition:transform .2s}
+    .drawer .m-sub{padding:4px 0 10px 12px}
+    .drawer .m-sub .grp{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:12px 8px 4px}
+    .drawer .m-sub a{display:block;padding:9px 10px;color:var(--ink);font-weight:500;font-size:.95rem;border-radius:8px}
+    .drawer .m-sub a:hover{background:var(--ivory-2);text-decoration:none}
+    .drawer-actions{padding:18px 20px 28px;display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--line-cool);margin-top:auto}
+
+    /* ============ Hero ============ */
+    .hero{background:linear-gradient(180deg,var(--ivory) 0%,#fff 100%);position:relative;overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding:74px 0 78px}
+    .hero h1{font-size:clamp(2.35rem,4.6vw,3.55rem);font-weight:600;letter-spacing:-.02em}
+    .hero h1 .accent{color:var(--blue);font-style:italic;font-weight:500}
+    .hero p.sub{font-size:1.18rem;color:var(--ink-soft);margin:22px 0 30px;max-width:33ch}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+    .hero .tertiary{margin-top:18px}
+    .reassure{display:flex;align-items:center;gap:10px;margin-top:26px;color:var(--ink-soft);font-size:.96rem}
+    .reassure svg{width:20px;height:20px;flex:none;stroke:var(--sage)}
+    .hero-media{position:relative}
+    .hero-media img{width:100%;height:520px;object-fit:cover;border-radius:var(--radius-lg);border:1px solid var(--line)}
+    .hero-media .frame{position:absolute;inset:0;border-radius:var(--radius-lg);box-shadow:inset 0 0 0 1px rgba(255,255,255,.25);pointer-events:none}
+    @media (max-width:960px){
+      .hero-grid{grid-template-columns:1fr;gap:36px;padding:48px 0 54px}
+      .hero-media{order:-1}
+      .hero-media img{height:340px}
+      .hero p.sub{max-width:none}
+    }
+
+    /* ============ Trust strip ============ */
+    .trust{background:var(--navy);color:#dfe8f1}
+    .trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:0}
+    .trust-item{display:flex;align-items:center;gap:13px;padding:22px 22px;border-left:1px solid rgba(255,255,255,.09)}
+    .trust-item:first-child{border-left:0}
+    .trust-item svg{width:26px;height:26px;flex:none;stroke:var(--gold-soft);stroke-width:1.6}
+    .trust-item b{color:#fff;font-family:var(--sans);font-weight:600;font-size:.98rem;display:block}
+    .trust-item span{font-size:.83rem;color:#a9bace}
+    @media (max-width:900px){
+      .trust .wrap{grid-template-columns:1fr 1fr}
+      .trust-item{border-left:0;border-top:1px solid rgba(255,255,255,.09)}
+      .trust-item:nth-child(-n+2){border-top:0}
+    }
+    @media (max-width:520px){.trust .wrap{grid-template-columns:1fr}.trust-item:nth-child(2){border-top:1px solid rgba(255,255,255,.09)}}
+
+    /* ============ Section shells ============ */
+    .sec{padding:88px 0}
+    .sec-ivory{background:var(--ivory)}
+    .sec-head{max-width:640px}
+    .sec-head.center{margin-inline:auto;text-align:center}
+    .sec-head h2{font-size:clamp(1.9rem,3.4vw,2.6rem)}
+    .sec-head p{margin-top:16px}
+
+    /* Services cards */
+    .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:46px}
+    .svc-card{
+      background:var(--cream-card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:32px 30px;
+      display:flex;flex-direction:column;transition:transform .2s var(--ease),box-shadow .2s var(--ease),border-color .2s var(--ease);
+    }
+    .svc-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--gold-soft)}
+    @media (prefers-reduced-motion:reduce){.svc-card:hover{transform:none}}
+    .svc-ic{width:52px;height:52px;border-radius:13px;background:var(--blue-050);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+    .svc-ic svg{width:27px;height:27px;stroke:var(--blue);stroke-width:1.7;fill:none}
+    .svc-card h3{font-size:1.32rem;margin-bottom:10px}
+    .svc-card p{color:var(--ink-soft);font-size:.98rem;flex:1}
+    .svc-card ul.mini{list-style:none;padding:0;margin:14px 0 20px;display:flex;flex-wrap:wrap;gap:6px}
+    .svc-card ul.mini li{font-size:.8rem;color:var(--navy);background:var(--ivory-2);border:1px solid var(--line);padding:4px 10px;border-radius:999px}
+    .svc-more{margin-top:32px;text-align:center}
+
+    /* Editorial split */
+    .editorial{display:grid;grid-template-columns:.92fr 1.08fr;gap:54px;align-items:center}
+    .editorial .media img{width:100%;height:560px;object-fit:cover;border-radius:var(--radius-lg);border:1px solid var(--line)}
+    .principles{list-style:none;padding:0;margin:28px 0 0;display:flex;flex-direction:column;gap:16px}
+    .principles li{display:flex;gap:14px;align-items:flex-start}
+    .principles .pi{width:38px;height:38px;border-radius:10px;background:var(--sage-050);flex:none;display:flex;align-items:center;justify-content:center}
+    .principles .pi svg{width:20px;height:20px;stroke:var(--sage);stroke-width:1.8;fill:none}
+    .principles b{color:var(--navy);font-family:var(--sans);display:block;font-size:1rem}
+    .principles span{color:var(--ink-soft);font-size:.94rem}
+    @media (max-width:960px){
+      .editorial{grid-template-columns:1fr;gap:34px}
+      .editorial .media{order:-1}
+      .editorial .media img{height:380px}
+    }
+
+    /* Programs */
+    .prog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:46px}
+    .prog-card{position:relative;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line);min-height:280px;display:flex}
+    .prog-card.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,37,64,.12) 0%,rgba(15,37,64,.82) 100%)}
+    .prog-card.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+    .prog-card.photo:hover img{transform:scale(1.05)}
+    @media (prefers-reduced-motion:reduce){.prog-card.photo:hover img{transform:none}}
+    .prog-card .body{position:relative;z-index:2;margin-top:auto;padding:26px 28px;color:#fff}
+    .prog-card.photo .body h3{color:#fff;font-size:1.5rem}
+    .prog-card .body p{font-size:.96rem;margin-top:8px;color:rgba(255,255,255,.9)}
+    .prog-card .tag{display:inline-block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:#fff;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);padding:4px 11px;border-radius:999px;margin-bottom:14px}
+    /* text programs */
+    .prog-card.text{background:var(--navy);color:#fff}
+    .prog-card.text .body{color:#fff}
+    .prog-card.text.gold{background:linear-gradient(150deg,#7a5a24,#b3893f)}
+    .prog-card.text.sage{background:linear-gradient(150deg,#3c5248,#6f8c7f)}
+    .prog-card.text .picon{width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;margin-bottom:auto}
+    .prog-card.text .picon svg{width:24px;height:24px;stroke:#fff;stroke-width:1.7;fill:none}
+    .prog-card.text .body h3{color:#fff;font-size:1.4rem}
+    .prog-note{margin-top:22px;font-size:.9rem;color:var(--ink-soft);display:flex;gap:9px;align-items:flex-start}
+    .prog-note svg{width:18px;height:18px;stroke:var(--gold);flex:none;margin-top:2px}
+    @media (max-width:720px){.prog-grid{grid-template-columns:1fr}}
+
+    /* Locations */
+    .loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:46px}
+    .loc-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column}
+    .loc-card .pic{position:relative;height:190px}
+    .loc-card .pic img{width:100%;height:100%;object-fit:cover}
+    .loc-card .pic .badge{position:absolute;left:16px;top:16px;background:rgba(15,37,64,.9);color:#fff;font-weight:600;font-size:.82rem;padding:6px 14px;border-radius:999px;backdrop-filter:blur(2px)}
+    .loc-card .body{padding:26px 28px 28px;display:flex;flex-direction:column;flex:1}
+    .loc-card h3{font-size:1.35rem}
+    .loc-card address{font-style:normal;color:var(--ink-soft);margin:12px 0 4px;line-height:1.7}
+    .loc-card .suites{font-size:.9rem;color:var(--navy);font-weight:600}
+    .loc-card .actions{margin-top:auto;padding-top:22px;display:flex;gap:12px;flex-wrap:wrap}
+    @media (max-width:720px){.loc-grid{grid-template-columns:1fr}}
+
+    /* Steps */
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:46px}
+    .step{background:var(--cream-card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:30px 28px;position:relative}
+    .step .num{font-family:var(--serif);font-size:2.4rem;font-weight:600;color:var(--gold-soft);line-height:1}
+    .step h3{font-size:1.2rem;margin:12px 0 8px}
+    .step p{color:var(--ink-soft);font-size:.96rem}
+    .step-audiences{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:34px}
+    .aud{border:1px solid var(--line-cool);border-radius:var(--radius);padding:24px 26px;background:var(--blue-050)}
+    .aud.alt{background:var(--sage-050)}
+    .aud h4{font-size:1.08rem;margin-bottom:6px}
+    .aud p{color:var(--ink-soft);font-size:.93rem;margin-bottom:16px}
+    @media (max-width:820px){.steps{grid-template-columns:1fr}.step-audiences{grid-template-columns:1fr}}
+
+    /* Accreditation & insurance */
+    .cred-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .cred{border-radius:var(--radius-lg);padding:34px 34px;border:1px solid var(--line)}
+    .cred.jc{background:#fff}
+    .cred.ins{background:var(--navy);color:#d7e2ee;border-color:var(--navy)}
+    .cred.ins h3{color:#fff}
+    .cred .seal{display:flex;align-items:center;gap:16px;margin-bottom:16px}
+    .cred .seal .g{width:60px;height:60px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#e8cf94,#b3893f);display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 4px 14px -6px rgba(179,137,63,.7)}
+    .cred .seal .g svg{width:30px;height:30px;stroke:#fff;stroke-width:1.8;fill:none}
+    .cred h3{font-size:1.3rem}
+    .cred p{margin-top:10px;font-size:.96rem}
+    .cred.jc p{color:var(--ink-soft)}
+    .cred .verify{margin-top:16px;font-size:.82rem;color:var(--gold);font-weight:600;display:inline-flex;gap:7px;align-items:center}
+    .cred.ins .verify{color:var(--gold-soft)}
+    .cred a.inl{color:var(--blue-600);font-weight:600}
+    .cred.ins a.inl{color:var(--gold-soft)}
+    @media (max-width:820px){.cred-grid{grid-template-columns:1fr}}
+
+    /* Final CTA */
+    .finalcta{background:linear-gradient(140deg,var(--navy) 0%,var(--navy-700) 60%,var(--blue-600) 130%);color:#fff;text-align:center}
+    .finalcta .wrap{padding:84px 24px}
+    .finalcta h2{color:#fff;font-size:clamp(2rem,3.8vw,2.9rem);max-width:20ch;margin-inline:auto}
+    .finalcta p{color:#c9d6e5;max-width:52ch;margin:20px auto 0;font-size:1.1rem}
+    .finalcta .fa{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+    .finalcta .tert{margin-top:20px}
+    .finalcta .tert a{color:#e7eef5;font-weight:600}
+
+    /* Crisis note */
+    .crisis{background:var(--ivory-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .crisis .wrap{display:flex;align-items:center;gap:16px;padding:18px 24px;justify-content:center;flex-wrap:wrap;text-align:center}
+    .crisis svg{width:22px;height:22px;stroke:var(--gold);flex:none}
+    .crisis p{font-size:.94rem;color:var(--ink)}
+    .crisis b{color:var(--navy)}
+    .crisis a{font-weight:700}
+
+    /* Footer */
+    footer.site{background:#0b1c31;color:#a9bace;font-size:.92rem}
+    .foot-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.1fr;gap:40px;padding:64px 0 48px}
+    .foot-brand img{height:56px;margin-bottom:18px;background:#fff;border-radius:10px;padding:8px 12px}
+    .foot-brand p{color:#93a6bc;max-width:34ch;font-size:.92rem}
+    .foot-brand .contact{margin-top:18px;display:flex;flex-direction:column;gap:6px}
+    .foot-brand .contact a,.foot-brand .contact span{color:#cdd9e6;display:inline-flex;align-items:center;gap:9px}
+    .foot-brand .contact svg{width:15px;height:15px;stroke:var(--gold-soft);flex:none}
+    footer.site h4{color:#fff;font-family:var(--sans);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;margin:0 0 16px;font-weight:700}
+    footer.site ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+    footer.site ul a{color:#a9bace}
+    footer.site ul a:hover{color:#fff}
+    .portal-note{font-size:.78rem;color:#7d90a6;margin-top:10px;line-height:1.5}
+    .foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+    .foot-bottom .legal{display:flex;gap:18px;flex-wrap:wrap}
+    .foot-bottom a{color:#93a6bc}
+    .foot-social{display:flex;gap:12px}
+    .foot-social a{width:36px;height:36px;border:1px solid rgba(255,255,255,.18);border-radius:9px;display:flex;align-items:center;justify-content:center}
+    .foot-social a:hover{background:rgba(255,255,255,.08)}
+    .foot-social svg{width:17px;height:17px;fill:#cdd9e6}
+    .disclaimer{background:#081525;color:#6d8098;font-size:.8rem;padding:16px 0;text-align:center;line-height:1.6}
+    .disclaimer .wrap{max-width:900px}
+    @media (max-width:900px){.foot-top{grid-template-columns:1fr 1fr;gap:34px}.foot-brand{grid-column:1/-1}}
+    @media (max-width:560px){.foot-top{grid-template-columns:1fr}.foot-bottom{flex-direction:column;align-items:flex-start}}
+
+    /* reveal animation */
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+    .reveal.in{opacity:1;transform:none}
+    @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to main content</a>
+
+  <!-- ============ Utility bar ============ -->
+  <div class="utility">
+    <div class="wrap">
+      <div class="u-left u-serve">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+        <span>Serving Baltimore City &amp; Odenton, Maryland</span>
+      </div>
+      <div class="u-right">
+        <a href="tel:14437599592"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg>443-759-9592</a>
+        <span class="u-sep">|</span>
+        <a href="https://www.mytransformationhealth.com/contact-us" target="_blank" rel="noopener">Refer a Client</a>
+        <span class="u-sep">|</span>
+        <a href="https://patientonlineportal.com/" target="_blank" rel="noopener">Patient Portal</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ Header ============ -->
+  <header class="site">
+    <div class="wrap">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="Transformation Health — home">
+          <img src="assets/images/logo.png" alt="Transformation Health logo" width="200" height="200" />
+        </a>
+
+        <nav class="mainnav" aria-label="Primary">
+          <ul>
+            <li class="mega-wrap">
+              <button class="navlink has-mega" aria-expanded="false" aria-haspopup="true" aria-controls="mega-services">
+                Services
+                <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="mega" id="mega-services" role="menu" aria-label="Services">
+                <div class="mega-grid">
+                  <div class="mega-col">
+                    <h4>Mental Health Care</h4>
+                    <ul>
+                      <li><a role="menuitem" href="#services">Outpatient Mental Health Clinic</a></li>
+                      <li><a role="menuitem" href="#services">Medication Management</a></li>
+                      <li><a role="menuitem" href="#services">Partial Hospitalization Program</a></li>
+                      <li><a role="menuitem" href="#services">Telehealth</a></li>
+                    </ul>
+                  </div>
+                  <div class="mega-col">
+                    <h4>Recovery Services</h4>
+                    <ul>
+                      <li><a role="menuitem" href="#services">Substance Use Disorder Programs</a></li>
+                      <li><a role="menuitem" href="#services">Adolescent Recovery Program</a></li>
+                    </ul>
+                  </div>
+                  <div class="mega-col">
+                    <h4>Rehabilitation &amp; Support</h4>
+                    <ul>
+                      <li><a role="menuitem" href="#services">Adult PRP</a></li>
+                      <li><a role="menuitem" href="#services">Minor PRP</a></li>
+                      <li><a role="menuitem" href="#services">Health Home</a></li>
+                      <li><a role="menuitem" href="#services">Supported Employment</a></li>
+                      <li><a role="menuitem" href="#programs">LGBTQIA+ Umbrella Club</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="mega-foot">
+                  <span>Not sure where to begin? Our care team will help you find the right fit.</span>
+                  <a class="txtlink" href="#start">How to get started <span class="arw">→</span></a>
+                </div>
+              </div>
+            </li>
+            <li><a class="navlink" href="#about">About</a></li>
+            <li><a class="navlink" href="#programs">Programs</a></li>
+            <li><a class="navlink" href="#locations">Locations</a></li>
+            <li><a class="navlink" href="#resources">Resources</a></li>
+            <li><a class="navlink" href="https://patientonlineportal.com/" target="_blank" rel="noopener">Patient Portal</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-cta">
+          <a class="refer" href="https://www.mytransformationhealth.com/contact-us" target="_blank" rel="noopener">Refer a Client</a>
+          <a class="btn btn-primary" href="https://www.mytransformationhealth.com/schedule-now" target="_blank" rel="noopener">Request Care</a>
+          <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile drawer -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-scrim" data-close></div>
+    <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="Menu">
+      <div class="drawer-top">
+        <img src="assets/images/logo.png" alt="Transformation Health" />
+        <button class="x-btn" data-close aria-label="Close menu">&times;</button>
+      </div>
+      <nav aria-label="Mobile">
+        <details>
+          <summary>Services
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="m-sub">
+            <div class="grp">Mental Health Care</div>
+            <a href="#services" data-close>Outpatient Mental Health Clinic</a>
+            <a href="#services" data-close>Medication Management</a>
+            <a href="#services" data-close>Partial Hospitalization Program</a>
+            <a href="#services" data-close>Telehealth</a>
+            <div class="grp">Recovery Services</div>
+            <a href="#services" data-close>Substance Use Disorder Programs</a>
+            <a href="#services" data-close>Adolescent Recovery Program</a>
+            <div class="grp">Rehabilitation &amp; Support</div>
+            <a href="#services" data-close>Adult PRP</a>
+            <a href="#services" data-close>Minor PRP</a>
+            <a href="#services" data-close>Health Home</a>
+            <a href="#services" data-close>Supported Employment</a>
+            <a href="#programs" data-close>LGBTQIA+ Umbrella Club</a>
+          </div>
+        </details>
+        <a class="m-item" href="#about" data-close>About</a>
+        <a class="m-item" href="#programs" data-close>Programs</a>
+        <a class="m-item" href="#locations" data-close>Locations</a>
+        <a class="m-item" href="#resources" data-close>Resources</a>
+        <a class="m-item" href="https://patientonlineportal.com/" target="_blank" rel="noopener" data-close>Patient Portal</a>
+      </nav>
+      <div class="drawer-actions">
+        <a class="btn btn-primary" href="https://www.mytransformationhealth.com/schedule-now" target="_blank" rel="noopener">Request Care</a>
+        <a class="btn btn-ghost" href="https://www.mytransformationhealth.com/contact-us" target="_blank" rel="noopener">Refer a Client</a>
+        <a class="btn btn-navy" href="tel:14437599592">Call 443-759-9592</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+    <span id="top"></span>
+
+    <!-- ============ Hero ============ -->
+    <section class="hero" aria-labelledby="hero-h">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow">Behavioral Health Care in Baltimore &amp; Odenton</p>
+            <h1 id="hero-h">Support for the <span class="accent">life you're building.</span></h1>
+            <p class="sub">Transformation Health provides individualized mental health, recovery, and rehabilitation services for children, adolescents, adults, and families across Maryland.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="https://www.mytransformationhealth.com/schedule-now" target="_blank" rel="noopener">Request Care</a>
+              <a class="btn btn-ghost" href="#services">Explore Services</a>
+            </div>
+            <div class="tertiary">
+              <a class="txtlink" href="https://www.mytransformationhealth.com/contact-us" target="_blank" rel="noopener">Refer a client <span class="arw">→</span></a>
+            </div>
+            <div class="reassure">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 1 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+              <span>Compassionate care · Individualized treatment · In-person &amp; telehealth options</span>
+            </div>
+          </div>
+          <div class="hero-media">
+            <img src="assets/images/hero-therapy.jpg" alt="A counselor takes notes while listening to a client during a calm, plant-filled therapy session" width="1200" height="800" fetchpriority="high" />
+            <div class="frame"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Trust strip ============ -->
+    <div class="trust" aria-label="At a glance">
+      <div class="wrap">
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <div><b>Two Maryland locations</b><span>Baltimore City &amp; Odenton</span></div>
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v3M16 4v3"/></svg>
+          <div><b>Medicaid &amp; Medicare</b><span>Maryland plans<sup>*</sup></span></div>
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          <div><b>Telehealth available</b><span>In-office &amp; virtual visits</span></div>
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 15.9 7.2 17.7l.9-5.4-3.9-3.8 5.4-.8Z"/></svg>
+          <div><b>Joint Commission</b><span>Gold Seal accredited<sup>*</sup></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ Services ============ -->
+    <section class="sec" id="services" aria-labelledby="svc-h">
+      <div class="wrap">
+        <div class="sec-head center reveal">
+          <p class="eyebrow">Our Services</p>
+          <h2 id="svc-h">Care that meets people where they are.</h2>
+          <p class="lead">Transformation Health offers connected services across mental health treatment, substance use recovery, psychiatric rehabilitation, and community support — coordinated so you never have to navigate the system alone.</p>
+        </div>
+
+        <div class="svc-grid">
+          <article class="svc-card reveal">
+            <div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 1 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg></div>
+            <h3>Mental Health Care</h3>
+            <p>Individual and family therapy, psychiatric evaluation, and medication management — in person or through telehealth — for everyday stress to more complex needs.</p>
+            <ul class="mini"><li>Outpatient Clinic</li><li>Medication Management</li><li>PHP</li><li>Telehealth</li></ul>
+            <a class="txtlink" href="https://www.mytransformationhealth.com/treatment-services" target="_blank" rel="noopener">Explore mental health care <span class="arw">→</span></a>
+          </article>
+
+          <article class="svc-card reveal">
+            <div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 21a7 7 0 0 0 7-7c0-3-2-5-2-5s-1 2-3 2c0-3-2-5-2-5s-4 3-4 8a7 7 0 0 0 6 7Z"/></svg></div>
+            <h3>Recovery Services</h3>
+            <p>Substance use disorder treatment for adults, plus a dedicated adolescent recovery program — respectful, evidence-informed, and built around each person's goals.</p>
+            <ul class="mini"><li>Substance Use Programs</li><li>Adolescent Recovery</li><li>Groups</li></ul>
+            <a class="txtlink" href="https://www.mytransformationhealth.com/treatment-services" target="_blank" rel="noopener">Explore recovery services <span class="arw">→</span></a>
+          </article>
+
+          <article class="svc-card reveal">
+            <div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="8" r="3.2"/><path d="M20 21v-2a4 4 0 0 0-3-3.8"/><path d="M15 4.2A3.2 3.2 0 0 1 15 11"/></svg></div>
+            <h3>Rehabilitation &amp; Community Support</h3>
+            <p>Psychiatric Rehabilitation (PRP) for adults and minors, Health Home care coordination, and Supported Employment that connect treatment to daily life.</p>
+            <ul class="mini"><li>Adult &amp; Minor PRP</li><li>Health Home</li><li>Supported Employment</li></ul>
+            <a class="txtlink" href="https://www.mytransformationhealth.com/treatment-services" target="_blank" rel="noopener">Explore rehabilitation <span class="arw">→</span></a>
+          </article>
+        </div>
+
+        <div class="svc-more">
+          <a class="btn btn-ghost" href="https://www.mytransformationhealth.com/treatment-services" target="_blank" rel="noopener">View all treatment services</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Individualized care ============ -->
+    <section class="sec sec-ivory" id="about" aria-labelledby="about-h">
+      <div class="wrap">
+        <div class="editorial">
+          <div class="media reveal">
+            <img src="assets/images/care-conversation.jpg" alt="A therapist listens attentively to a young client during a relaxed one-on-one conversation" width="666" height="1000" loading="lazy" />
+          </div>
+          <div class="reveal">
+            <p class="eyebrow">Our Approach</p>
+            <h2 id="about-h">Your care should reflect your life — not a template.</h2>
+            <p class="lead" style="margin-top:16px">For more than fifteen years, Transformation Health has provided individualized counseling tailored to each person we serve. We take time to understand your history, your family, and your goals, then build a plan of care around them — coordinating therapy, psychiatry, and community support so the pieces work together.</p>
+            <ul class="principles">
+              <li>
+                <span class="pi"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 21a7 7 0 0 0 7-7c0-3-2-5-2-5s-1 2-3 2c0-3-2-5-2-5s-4 3-4 8a7 7 0 0 0 6 7Z"/></svg></span>
+                <div><b>Individualized treatment</b><span>Plans shaped by your needs, strengths, and pace — not a one-size-fits-all program.</span></div>
+              </li>
+              <li>
+                <span class="pi"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 1 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg></span>
+                <div><b>Respect for every identity</b><span>An affirming, inclusive space for people of every background, family, and community.</span></div>
+              </li>
+              <li>
+                <span class="pi"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="8" r="3.2"/><path d="M20 21v-2a4 4 0 0 0-3-3.8"/></svg></span>
+                <div><b>Community-connected care</b><span>Partnerships and programs that support recovery well beyond the therapy room.</span></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Programs ============ -->
+    <section class="sec" id="programs" aria-labelledby="prog-h">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <p class="eyebrow">Community &amp; Enrichment Programs</p>
+          <h2 id="prog-h">Support beyond the therapy room.</h2>
+          <p class="lead">Alongside clinical treatment, Transformation Health offers creative, vocational, and community programs that help people connect, express themselves, and grow.</p>
+        </div>
+
+        <div class="prog-grid">
+          <article class="prog-card photo reveal">
+            <img src="assets/images/program-dance.jpg" alt="Dancers moving together on a warm wooden studio floor" width="1000" height="668" loading="lazy" />
+            <div class="body">
+              <span class="tag">Movement</span>
+              <h3>Therapeutic Dance Hall</h3>
+              <p>Movement and expression as a pathway to confidence, connection, and emotional wellness.</p>
+            </div>
+          </article>
+
+          <article class="prog-card photo reveal">
+            <img src="assets/images/program-arts.jpg" alt="Several people painting together with brushes and bright colors at a shared art table" width="1000" height="667" loading="lazy" />
+            <div class="body">
+              <span class="tag">Creative</span>
+              <h3>The Healing Arts</h3>
+              <p>Guided creative expression that supports processing, community, and recovery.</p>
+            </div>
+          </article>
+
+          <article class="prog-card text sage reveal">
+            <div class="body">
+              <span class="picon"><svg viewBox="0 0 24 24"><path d="M20 7h-4V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2ZM10 5h4v2h-4Z"/></svg></span>
+              <h3>Supported Employment</h3>
+              <p>Coaching and workplace support that help individuals build skills, find work, and sustain independence.</p>
+            </div>
+          </article>
+
+          <article class="prog-card text gold reveal">
+            <div class="body">
+              <span class="picon"><svg viewBox="0 0 24 24"><path d="M18 4a3 3 0 0 0-3 3c0 1 .5 2 .5 2H8.5S9 8 9 7a3 3 0 1 0-3 3h12a3 3 0 0 0 0-6Z"/><path d="M4 12h16v7a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1zM12 10v10"/></svg></span>
+              <h3>LGBTQIA+ Umbrella Club</h3>
+              <p>An affirming space for LGBTQIA+ individuals to find community, belonging, and peer support.</p>
+            </div>
+          </article>
+        </div>
+
+        <p class="prog-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+          <span>Transformation Health also supports <strong>T-Nation</strong>, an affiliated 501(c)(3) nonprofit that leads community outreach and enrichment activities. T-Nation programming is community-based and separate from clinical treatment services. <em>[Please verify the current name and description of each program before publishing.]</em></span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ Locations ============ -->
+    <section class="sec sec-ivory" id="locations" aria-labelledby="loc-h">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <p class="eyebrow">Locations</p>
+          <h2 id="loc-h">Two welcoming offices in Maryland.</h2>
+          <p class="lead">Care is available in person at either location and through telehealth across Maryland.</p>
+        </div>
+
+        <div class="loc-grid">
+          <article class="loc-card reveal">
+            <div class="pic">
+              <img src="assets/images/location-baltimore.jpg" alt="A tree-lined Baltimore street of classic brick rowhouses with autumn leaves" width="632" height="400" loading="lazy" />
+              <span class="badge">Baltimore City</span>
+            </div>
+            <div class="body">
+              <h3>Baltimore City Office</h3>
+              <address>
+                312 N. Martin Luther King Jr. Blvd.<br />
+                <span class="suites">Suites 103 &amp; 300</span><br />
+                Baltimore, MD 21201
+              </address>
+              <div class="actions">
+                <a class="btn btn-primary" href="https://maps.google.com/?q=312+N+Martin+Luther+King+Jr+Blvd+Baltimore+MD+21201" target="_blank" rel="noopener">Get Directions</a>
+                <a class="btn btn-ghost" href="https://www.mytransformationhealth.com/baltmore-city" target="_blank" rel="noopener">View Location</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="loc-card reveal">
+            <div class="pic">
+              <img src="assets/images/location-odenton.jpg" alt="A leafy, tree-shaded brick street in Anne Arundel County, Maryland" width="600" height="400" loading="lazy" />
+              <span class="badge">Odenton · Anne Arundel County</span>
+            </div>
+            <div class="body">
+              <h3>Odenton Office</h3>
+              <address>
+                2288 Blue Water Blvd.<br />
+                <span class="suites">Suites 315 &amp; 317</span><br />
+                Odenton, MD 21113
+              </address>
+              <div class="actions">
+                <a class="btn btn-primary" href="https://maps.google.com/?q=2288+Blue+Water+Blvd+Odenton+MD+21113" target="_blank" rel="noopener">Get Directions</a>
+                <a class="btn btn-ghost" href="https://www.mytransformationhealth.com/locations" target="_blank" rel="noopener">View Location</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ How to get started ============ -->
+    <section class="sec" id="start" aria-labelledby="start-h">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <p class="eyebrow">Getting Started</p>
+          <h2 id="start-h">A clear path to your first appointment.</h2>
+          <p class="lead">Reaching out is simple, and our intake team will guide you through every step.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step reveal">
+            <div class="num">1</div>
+            <h3>Reach out or refer</h3>
+            <p>Call our intake team, request care online, or submit a referral. Share as much or as little as you're comfortable with to begin.</p>
+          </div>
+          <div class="step reveal">
+            <div class="num">2</div>
+            <h3>Speak with the care team</h3>
+            <p>We'll talk through your needs and goals, confirm coverage, and help match you with the right services and location.</p>
+          </div>
+          <div class="step reveal">
+            <div class="num">3</div>
+            <h3>Begin an individualized plan</h3>
+            <p>You'll be scheduled with a provider and start a plan of care built around you — in person or through telehealth.</p>
+          </div>
+        </div>
+
+        <div class="step-audiences">
+          <div class="aud reveal">
+            <h4>Individuals &amp; families</h4>
+            <p>Start the conversation whenever you're ready. Our team can help you understand options, coverage, and next steps.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="https://www.mytransformationhealth.com/schedule-now" target="_blank" rel="noopener">Request Care</a>
+              <a class="btn btn-ghost" href="tel:14437599592">Call 443-759-9592</a>
+            </div>
+          </div>
+          <div class="aud alt reveal">
+            <h4>Healthcare &amp; community partners</h4>
+            <p>Referring a client? Connect with our intake team to coordinate care and share the information needed to get started.</p>
+            <div class="hero-actions">
+              <a class="btn btn-navy" href="https://www.mytransformationhealth.com/contact-us" target="_blank" rel="noopener">Refer a Client</a>
+              <a class="btn btn-ghost" href="https://www.mytransformationhealth.com/locations" target="_blank" rel="noopener">Referral Info</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Accreditation & insurance ============ -->
+    <section class="sec sec-ivory" id="resources" aria-labelledby="cred-h">
+      <div class="wrap">
+        <div class="sec-head reveal" style="margin-bottom:40px">
+          <p class="eyebrow">Trust &amp; Coverage</p>
+          <h2 id="cred-h">Accredited care, clearly explained.</h2>
+        </div>
+        <div class="cred-grid">
+          <div class="cred jc reveal">
+            <div class="seal">
+              <span class="g"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 15.9 7.2 17.7l.9-5.4-3.9-3.8 5.4-.8Z"/></svg></span>
+              <h3>The Joint Commission Gold Seal</h3>
+            </div>
+            <p>Transformation Health, LLC has earned The Joint Commission's Gold Seal of Approval®, an independent, nationally recognized symbol of a healthcare organization's commitment to safe, quality care.</p>
+            <p style="margin-top:12px"><a class="inl" href="https://www.jointcommission.org/resources/patient-safety-topics/report-a-patient-safety-event/" target="_blank" rel="noopener">Report a patient-safety concern to The Joint Commission →</a></p>
+            <span class="verify"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>Confirm accreditation is current before publishing.</span>
+          </div>
+
+          <div class="cred ins reveal">
+            <h3>Insurance &amp; coverage</h3>
+            <p style="margin-top:14px">Maryland Medicaid, Medicare, and select private insurance plans may be accepted. Coverage varies by plan and service, so please contact our care team to confirm eligibility and benefits before your first visit.</p>
+            <p style="margin-top:14px"><a class="inl" href="tel:14437599592">Call 443-759-9592 to verify your coverage →</a></p>
+            <span class="verify"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>Verify accepted plans before publishing — avoid “all insurance accepted.”</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Final CTA ============ -->
+    <section class="finalcta" aria-labelledby="final-h">
+      <div class="wrap">
+        <h2 id="final-h">You don't have to figure out the next step alone.</h2>
+        <p>Our team can help you understand services, locations, referral options, and how to begin — at whatever pace feels right for you.</p>
+        <div class="fa">
+          <a class="btn btn-white" href="https://www.mytransformationhealth.com/schedule-now" target="_blank" rel="noopener">Request Care</a>
+          <a class="btn btn-outline-light" href="tel:14437599592">Call 443-759-9592</a>
+        </div>
+        <div class="tert"><a href="https://www.mytransformationhealth.com/contact-us" target="_blank" rel="noopener">Refer a client →</a></div>
+      </div>
+    </section>
+
+    <!-- ============ Crisis note ============ -->
+    <div class="crisis" role="note" aria-label="Crisis resources">
+      <div class="wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+        <p><b>In an emergency, call <a href="tel:911">911</a>.</b> If you or someone you know is experiencing a mental-health or suicide crisis, call or text <a href="tel:988">988</a> for the Suicide &amp; Crisis Lifeline. This website is not monitored for emergencies.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- ============ Footer ============ -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="foot-top">
+        <div class="foot-brand">
+          <img src="assets/images/logo.png" alt="Transformation Health" />
+          <p>Individualized behavioral health care — mental health, substance use recovery, and psychiatric rehabilitation — for children, adolescents, adults, and families across Maryland.</p>
+          <div class="contact">
+            <a href="tel:14437599592"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg>443-759-9592 <span style="color:#7d90a6">· Fax 443-961-8518</span></a>
+            <a href="mailto:info@mytransformationhealth.com"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>info@mytransformationhealth.com</a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Mental Health Care</a></li>
+            <li><a href="#services">Recovery Services</a></li>
+            <li><a href="#services">Adult &amp; Minor PRP</a></li>
+            <li><a href="#services">Health Home</a></li>
+            <li><a href="#services">Supported Employment</a></li>
+            <li><a href="#programs">Programs &amp; Outreach</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Get Started</h4>
+          <ul>
+            <li><a href="https://www.mytransformationhealth.com/schedule-now" target="_blank" rel="noopener">Request Care</a></li>
+            <li><a href="https://www.mytransformationhealth.com/contact-us" target="_blank" rel="noopener">Refer a Client</a></li>
+            <li><a href="https://www.mytransformationhealth.com/projects/prp-careers" target="_blank" rel="noopener">Careers</a></li>
+            <li><a href="#locations">Locations</a></li>
+            <li><a href="https://www.mytransformationhealth.com/contact-us" target="_blank" rel="noopener">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Patient Portals</h4>
+          <ul>
+            <li><a href="https://patientonlineportal.com/" target="_blank" rel="noopener">Portal Login (all clients)</a></li>
+            <li><a href="https://www.mytransformationhealth.com/baltimore-city-new-and-existing-client-intake-form" target="_blank" rel="noopener">Baltimore City — Intake Form</a></li>
+            <li><a href="https://www.mytransformationhealth.com/copy-of-anne-arundel-county-new-existing" target="_blank" rel="noopener">Anne Arundel / Odenton — Intake Form</a></li>
+          </ul>
+          <p class="portal-note">Please choose the intake form for your location. Use the secure portal login for medical records and messaging.</p>
+        </div>
+      </div>
+
+      <div class="foot-bottom">
+        <div class="legal">
+          <span>© <span id="yr">2026</span> Transformation Health, LLC. All rights reserved.</span>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Accessibility</a>
+        </div>
+        <div class="foot-social">
+          <a href="https://www.facebook.com/mytransformationhealthllc/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg></a>
+          <a href="https://www.instagram.com/transformationhealthprp" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3 0 4.1.1 1 0 1.7.2 2.3.4.6.3 1.1.6 1.6 1.1.5.5.8 1 1.1 1.6.2.6.4 1.3.4 2.3C21.6 9 21.6 9.3 21.6 12s0 3-.1 4.1c0 1-.2 1.7-.4 2.3a4.3 4.3 0 0 1-1.1 1.6 4.3 4.3 0 0 1-1.6 1.1c-.6.2-1.3.4-2.3.4-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-1 0-1.7-.2-2.3-.4a4.3 4.3 0 0 1-1.6-1.1 4.3 4.3 0 0 1-1.1-1.6c-.2-.6-.4-1.3-.4-2.3C2.4 15 2.4 14.7 2.4 12s0-3 .1-4.1c0-1 .2-1.7.4-2.3A4.3 4.3 0 0 1 4 4a4.3 4.3 0 0 1 1.6-1.1c.6-.2 1.3-.4 2.3-.4C9 2.4 9.3 2.4 12 2.4Zm0 3.2A6.4 6.4 0 1 0 18.4 12 6.4 6.4 0 0 0 12 5.4Zm0 10.6A4.2 4.2 0 1 1 16.2 12 4.2 4.2 0 0 1 12 16.2Zm6.6-10.9a1.5 1.5 0 1 0 1.5 1.5 1.5 1.5 0 0 0-1.5-1.5Z"/></svg></a>
+          <a href="https://www.youtube.com/@transformationhealthllc" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.7-1.7C19.4 5.2 12 5.2 12 5.2s-7.4 0-8.9.4a2.5 2.5 0 0 0-1.7 1.7C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.7 1.7c1.5.4 8.9.4 8.9.4s7.4 0 8.9-.4a2.5 2.5 0 0 0 1.7-1.7C23 15.2 23 12 23 12Zm-13 3V9l5.2 3Z"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      <div class="wrap">
+        Please do not submit personal health information through general web or email contact. For anything involving your medical records, appointments, or treatment, use the secure patient portal or call our office. This website provides general information and is not a substitute for professional medical advice or emergency care.
+        <br /><em style="opacity:.75">Content marked with an asterisk (*) — including insurance participation and accreditation status — should be verified with Transformation Health before publishing.</em>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // Desktop Services mega toggle (click, in addition to hover)
+    (function(){
+      var btn = document.querySelector('.has-mega');
+      var mega = document.getElementById('mega-services');
+      if(!btn) return;
+      function close(){ btn.setAttribute('aria-expanded','false'); }
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        var open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!open));
+      });
+      document.addEventListener('click', function(e){
+        if(!btn.contains(e.target) && !mega.contains(e.target)) close();
+      });
+      document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+    })();
+
+    // Mobile drawer
+    (function(){
+      var drawer = document.getElementById('drawer');
+      var burger = document.getElementById('burger');
+      function open(){ drawer.classList.add('open'); drawer.setAttribute('aria-hidden','false'); burger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+      function close(){ drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); burger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+      burger.addEventListener('click', open);
+      drawer.addEventListener('click', function(e){ if(e.target.hasAttribute('data-close') || e.target.closest('[data-close]')) close(); });
+      document.addEventListener('keydown', function(e){ if(e.key==='Escape' && drawer.classList.contains('open')) close(); });
+    })();
+
+    // Reveal on scroll
+    (function(){
+      var els = document.querySelectorAll('.reveal');
+      if(!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+        els.forEach(function(el){ el.classList.add('in'); });
+        return;
+      }
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+      }, {threshold:.14, rootMargin:'0px 0px -8% 0px'});
+      els.forEach(function(el){ io.observe(el); });
+    })();
+  </script>
+</body>
+</html>
