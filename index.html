@@ -61,6 +61,8 @@
     .eyebrow{font-size:.82rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
     .lead{font-size:1.12rem;color:var(--ink-soft)}
     section{scroll-margin-top:120px}
+    /* prevent CSS grid/flex track blowout from intrinsic image widths */
+    .hero-grid>*,.editorial>*,.svc-grid>*,.prog-grid>*,.loc-grid>*,.steps>*,.step-audiences>*,.cred-grid>*,.trust .wrap>*,.foot-top>*{min-width:0}
 
     :focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:4px}
 
@@ -106,14 +108,20 @@
     @media (max-width:860px){
       .utility .u-serve{display:none}
       .utility .wrap{justify-content:center}
-      .utility .u-right{gap:16px}
+      .utility .u-right{gap:14px}
+    }
+    @media (max-width:520px){
+      .utility{font-size:.8rem}
+      .utility .u-right{gap:10px}
+      .utility .u-sep{display:none}
+      .utility .wrap{padding-inline:14px}
     }
 
     /* ============ Header ============ */
     header.site{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-cool)}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:82px}
     .brand{display:flex;align-items:center;flex:none}
-    .brand img{height:60px;width:auto}
+    .brand img{height:68px;width:auto}
     .brand .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
     .mainnav{display:flex;align-items:center;gap:4px}
@@ -155,8 +163,14 @@
     @media (max-width:1024px){
       .mainnav,.header-cta .refer{display:none}
       .burger{display:flex}
-      .brand img{height:52px}
+      .brand img{height:56px}
       .nav{min-height:72px}
+    }
+    @media (max-width:420px){
+      .brand img{height:48px}
+      .header-cta{gap:10px}
+      .header-cta .btn-primary{padding:11px 16px;font-size:.9rem}
+      .wrap{padding-inline:16px}
     }
 
     /* Mobile drawer */
@@ -243,6 +257,7 @@
     .svc-card ul.mini{list-style:none;padding:0;margin:14px 0 20px;display:flex;flex-wrap:wrap;gap:6px}
     .svc-card ul.mini li{font-size:.8rem;color:var(--navy);background:var(--ivory-2);border:1px solid var(--line);padding:4px 10px;border-radius:999px}
     .svc-more{margin-top:32px;text-align:center}
+    @media (max-width:900px){.svc-grid{grid-template-columns:1fr;gap:18px;max-width:560px;margin-inline:auto}}
 
     /* Editorial split */
     .editorial{display:grid;grid-template-columns:.92fr 1.08fr;gap:54px;align-items:center}
